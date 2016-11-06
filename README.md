@@ -37,8 +37,10 @@ Developers will work on **src** Directory and gulp will create a **docs** (You c
 ### Create Front-End Build (Production Environment)
 
 To create build to deploy in production env, run following command.
-> npm run build
+
  ```
+ npm run build
+
  It will create a minimized build (HTML/JS/CSS Minimized) in docs directory for production environment. Which will be used for deployment.
 
  N.B., It won't start server for production environment.
