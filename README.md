@@ -48,7 +48,7 @@ To create build to deploy in production env, run following command.
 
 ### Adding Resources:
  * For adding a new JS library, follow below commands
-  * bower install --save <lib name> (It'll update bower.json file)
+  * bower install --save < lib name > (It'll update bower.json file)
   * Add the same file path to "jsLibSources" of "config.js" File
   * Restart Server
 
