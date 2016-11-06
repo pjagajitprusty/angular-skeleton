@@ -1,0 +1,28 @@
+{
+  "name": "UI_SKELETON",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "npm install && bower install && gulp",
+    "build": "npm install && bower install && NODE_ENV=production gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "?.git"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-expect-file": "0.0.7",
+    "gulp-if": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7"
+  },
+  "author": "Jagajit Prusty",
+  "license": "ISC"
+}

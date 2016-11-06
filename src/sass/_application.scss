@@ -1,0 +1,28 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: $font-family;
+  color: $color;
+  font-size: $font-size;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  header {
+    @include centerAllignedDiv(50px);
+    .logged-user {
+      text-align: right;
+    }
+  }
+  main {
+    position: relative;
+    flex: 1;
+  }
+  footer {
+    @include centerAllignedDiv(50px);
+  }
+}
