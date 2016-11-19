@@ -43,7 +43,7 @@ To create build to deploy in production env, run following command.
 
  It will create a minimized build (HTML/JS/CSS Minimized) in docs directory for production environment. Which will be used for deployment.
 
- N.B., It won't start server for production environment.
+ N.B.: It won't start server for production environment.
  ```
 
 ### Adding Resources:
@@ -59,5 +59,6 @@ To create build to deploy in production env, run following command.
 
 ## TODO:
 - [x] Styling using SASS
+- [ ] Cache busting for JS/CSS Files
 - [ ] Common styling, HTML layouting
 - [ ] Minify Resources for production environment.
