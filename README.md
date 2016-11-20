@@ -59,6 +59,7 @@ To create build to deploy in production env, run following command.
 
 ## TODO:
 - [x] Styling using SASS
+- [x] Babel preprocessing (To convert ES6 => ES5 for cross browser compatibility)
 - [ ] Cache busting for JS/CSS Files
 - [ ] Common styling, HTML layouting
 - [ ] Minify Resources for production environment.

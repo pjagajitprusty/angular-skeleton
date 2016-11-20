@@ -1,5 +1,5 @@
 {
-  "name": "UI_SKELETON",
+  "name": "angular-skeleton",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,8 +11,10 @@
     "url": "?.git"
   },
   "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",

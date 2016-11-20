@@ -4,6 +4,7 @@ var gulpConfig = {
     'bower_components/angular-animate/angular-animate.min.js',
     'bower_components/angular-bootstrap/ui-bootstrap.min.js',
     'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+    'bower_components/angular-route/angular-route.min.js',
   ],
   jsCustomSources : [
     'src/js/*.js',

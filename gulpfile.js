@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
+    babel = require("gulp-babel"),
     gulpConfig = require('./config').gulpConfig;
 
 var jsLibSources = gulpConfig.jsLibSources,
@@ -55,7 +56,10 @@ gulp.task('jsLib', function() {
 gulp.task('jsCustom', function() {
     return  gulp
             .src(jsCustomSources)
+            .pipe(sourcemaps.init())
+            .pipe(babel())
             .pipe(concat('all.min.js'))
+            .pipe(sourcemaps.write("./maps"))
             .pipe(gulp.dest(destLocation + 'js/'))
             .pipe(connect.reload())
 });
