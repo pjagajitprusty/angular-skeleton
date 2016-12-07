@@ -1,16 +1,16 @@
 # angular-skeleton
-This is a fully automated front-end build to create a full scale Angular Application. See [Demo](https://pjagajitprusty.github.io/angular-skeleton/). </br>
-
-Client side dependencies (AngularJS, Angular Bootstrap etc) are maintained with [**Bower**](https://bower.io/). Development dependencies (Gulp, SASS etc) are maintained with [**Npm**](https://www.npmjs.com/).
+It automates the Front-end build generation using Gulp for different environments. See [Demo](https://pjagajitprusty.github.io/angular-skeleton/). </br>
 
 ## Features
 * Fully automated using [**Gulp**](http://gulpjs.com/) to generate build dynamically.
-* Applied watch on all HTML, SASS & JS Files so that it automatically reloads browser on file change.
-* Added best practices broiler plates for SPA (single page app), routing, home page (Header, Footer, Body styling )
-* Added styles through SASS thus making configuration very easy.
+* Applied watch on all HTML, SASS & JS Files so that it automatically reloads browser on file change making the development easier.
+* Added best practices boilerplates for SPA (single page app), routing, home page (Header, Footer, Body styling )
+* Added SASS & JS precompilers.
 * Added common SASS mixins (Image Grid, clearfix) with example. So that one can get started with SASS for powerful styling.
 
 ## Getting started
+
+Client side dependencies (e.g. AngularJS, Angular Bootstrap etc) are maintained with [**Bower**](https://bower.io/). Development dependencies (e.g. Gulp, Babel, SASS etc) are maintained with [**Npm**](https://www.npmjs.com/).
 
 ### Local Server (Development Environment)
 
@@ -58,8 +58,8 @@ To create build to deploy in production env, run following command.
    "jsLibSources" of "config.js" File.
 
 ## TODO:
-- [x] Styling using SASS
-- [x] Babel preprocessing (To convert ES6 => ES5 for cross browser compatibility)
-- [ ] Cache busting for JS/CSS Files
-- [ ] Common styling, HTML layouting
+- [x] Styling using SASS.
+- [x] Babel preprocessing (To convert ES6 => ES5 for cross browser compatibility).
+- [ ] Cache busting for JS/CSS Files.
+- [x] Boilerplates for common styling and page layouts.
 - [ ] Minify Resources for production environment.
