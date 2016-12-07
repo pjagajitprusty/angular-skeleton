@@ -1,5 +1,5 @@
 # angular-skeleton
-It automates the Front-end build generation using Gulp for different environments. See [Demo](https://pjagajitprusty.github.io/angular-skeleton/). </br>
+It automates the Front-end build generation using Gulp for different environments. One can clone this repo and get started with developing a full-fledged Angular Application without worrying about initial setup. See [Demo](https://pjagajitprusty.github.io/angular-skeleton/). </br>
 
 ## Features
 * Fully automated using [**Gulp**](http://gulpjs.com/) to generate build dynamically.
