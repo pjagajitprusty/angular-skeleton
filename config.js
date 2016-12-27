@@ -1,4 +1,5 @@
 var gulpConfig = {
+  destLocation : './docs/',
   jsLibSources : [
     'bower_components/angular/angular.min.js',
     'bower_components/angular-animate/angular-animate.min.js',

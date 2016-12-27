@@ -6,8 +6,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     expect = require('gulp-expect-file'),
     cleanCSS = require('gulp-clean-css'),
+    clean = require('gulp-clean'),
+    del = require('del'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
+    rev = require('gulp-rev'),
+    revReplace = require('gulp-rev-replace'),
+    runSequence = require('run-sequence'),
     babel = require("gulp-babel"),
     gulpConfig = require('./config').gulpConfig;
 
@@ -22,7 +27,7 @@ var jsLibSources = gulpConfig.jsLibSources,
     indexPage = gulpConfig.indexPage,
     templateSources = gulpConfig.templateSources,
     env = process.env.NODE_ENV || 'development',
-    destLocation = './docs/';
+    destLocation = gulpConfig.destLocation;
 
 gulp.task('html', ['jsLib', 'jsCustom', 'cssLib', 'cssCustom', 'sass', 'image', 'template'], function() {
     return  gulp
@@ -114,6 +119,34 @@ gulp.task('connect', function() {
       port : 9999
     });
 })
-var tasks = (env === 'production') ? ['html'] : ['html', 'connect', 'watch'];
 
-gulp.task('default', tasks);
+gulp.task('rev', function () {
+  return gulp.src([destLocation + "**/*.css", destLocation + "**/*.js"])
+    .pipe(rev())
+    .pipe(gulp.dest(destLocation))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest(destLocation))
+
+
+})
+
+gulp.task('revreplace', ['rev'], function(){
+  var manifest = gulp.src(destLocation + "rev-manifest.json");
+  return gulp.src(destLocation + "index.html")
+    .pipe(revReplace({manifest: manifest}))
+    .pipe(gulp.dest(destLocation));
+});
+
+gulp.task('clean', function() {
+  return del.sync(destLocation);
+})
+
+gulp.task('default', function (cb) {
+  if(env === 'production'){
+    runSequence('clean', 'html', 'revreplace', cb);
+  }
+  else{
+    runSequence('clean', 'html', 'watch', 'connect', cb);
+  }
+
+});
