@@ -1,7 +1,13 @@
-APP.controller('homeController', homeController);
+(function() {
+  'use strict';
+  angular
+    .module('Angular-Skeleton')
+    .controller('HomeController', HomeController);
 
-homeController.$inject = [];
-function homeController() {
-  var self = this;
-  self.welcomeText = 'Home page goes here.    '
-}
+  HomeController.$inject = [];
+  function HomeController() {
+    var self = this
+    self.welcomeText = 'Home page goes here'
+  }
+
+}());

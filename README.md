@@ -5,6 +5,7 @@ It automates the Front-end build generation using Gulp for different environment
 * Fully automated using [**Gulp**](http://gulpjs.com/) to generate build dynamically.
 * Applied watch on all HTML, SASS & JS Files so that it automatically reloads browser on file change making the development easier.
 * Cache Busting is added for production environment. It allows user to receive the most recently updated files without having to perform a hard refresh or clear the browser cache.
+* Added ESLint to analyze JS files for potential errors.
 * Added best practices boilerplates for SPA (single page app), routing, home page (Header, Footer, Body styling )
 * Added SASS & JS precompilers.
 * Added common SASS mixins (Image Grid, clearfix) with example. So that one can get started with SASS for powerful styling.
@@ -62,5 +63,6 @@ To create build to deploy in production env, run following command.
 - [x] Styling using SASS.
 - [x] Babel preprocessing (To convert ES6 => ES5 for cross browser compatibility).
 - [x] Cache busting for JS/CSS Files.
+- [x] ESLint to analyze JS Files for potential errors.
 - [x] Boilerplates for common styling and page layouts.
 - [ ] Minify Resources for production environment.

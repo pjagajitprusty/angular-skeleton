@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     expect = require('gulp-expect-file'),
     cleanCSS = require('gulp-clean-css'),
-    clean = require('gulp-clean'),
     del = require('del'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -14,6 +13,7 @@ var gulp = require('gulp'),
     revReplace = require('gulp-rev-replace'),
     runSequence = require('run-sequence'),
     babel = require("gulp-babel"),
+    eslint = require('gulp-eslint'),
     gulpConfig = require('./config').gulpConfig;
 
 var jsLibSources = gulpConfig.jsLibSources,
@@ -27,15 +27,34 @@ var jsLibSources = gulpConfig.jsLibSources,
     indexPage = gulpConfig.indexPage,
     templateSources = gulpConfig.templateSources,
     env = process.env.NODE_ENV || 'development',
-    destLocation = gulpConfig.destLocation;
+    destLocation = gulpConfig.destLocation,
+    PORT = 9999; //Localhost Server PORT for Dev Env
 
-gulp.task('html', ['jsLib', 'jsCustom', 'cssLib', 'cssCustom', 'sass', 'image', 'template'], function() {
+gulp.task('default', function (cb) {
+  if(env === 'production'){
+    runSequence('clean', 'lint', 'html', 'revreplace', cb);
+  }
+  else{
+    runSequence('clean', 'lint', 'html', 'watch', 'connect', cb);
+  }
+});
+
+
+gulp.task('html', ['jsLib', 'jsCustom', 'cssLib', 'cssCustom', 'sass', 'image', 'template', 'favicon'], function() {
     return  gulp
             .src(indexPage)
             .pipe(expect(indexPage))
             .pipe(gulp.dest(destLocation))
             .pipe(connect.reload())
 });
+
+gulp.task('favicon', function() {
+    return  gulp
+            .src('src/images/favicon.png')
+            .pipe(expect('src/images/favicon.png'))
+            .pipe(gulp.dest(destLocation))
+});
+
 
 gulp.task('image', function() {
     return  gulp
@@ -112,14 +131,6 @@ gulp.task('watch', function() {
     gulp.watch(allSassSources, ['sass']);
 })
 
-gulp.task('connect', function() {
-    connect.server({
-      root : destLocation,
-      livereload : true,
-      port : 9999
-    });
-})
-
 gulp.task('rev', function () {
   return gulp.src([destLocation + "**/*.css", destLocation + "**/*.js"])
     .pipe(rev())
@@ -141,12 +152,27 @@ gulp.task('clean', function() {
   return del.sync(destLocation);
 })
 
-gulp.task('default', function (cb) {
-  if(env === 'production'){
-    runSequence('clean', 'html', 'revreplace', cb);
-  }
-  else{
-    runSequence('clean', 'html', 'watch', 'connect', cb);
-  }
+gulp.task('lint', function () {
+  return gulp.src(jsCustomSources)
+            .pipe(eslint())
+            .pipe(eslint.format())
+            .pipe(eslint.results(results => {
+                // Called once for all ESLint results.
+                console.log('\n\n################################################');
+                console.log('\x1b[36m%s\x1b[0m','ESlint Results:');
+                console.log('------------------------------------------');
+                console.log('Total JS Files linted:', results.length);
+                console.log('Total Warnings:', results.warningCount);
+                console.log('Total Errors:', results.errorCount);
+                console.log('################################################\n\n');
+            }))
+            .pipe(eslint.failAfterError())
+})
 
-});
+gulp.task('connect', function() {
+    connect.server({
+      root : destLocation,
+      livereload : true,
+      port : PORT
+    });
+})

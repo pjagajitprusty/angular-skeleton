@@ -1,0 +1,14 @@
+{
+  "extends": ["eslint:recommended", "angular"],
+  "rules":{
+      "angular/log" : "warn",
+      "angular/controller-as-vm" : "off",
+      "no-console" : "off",
+  },
+  "globals": {
+    # "console": true,
+  },
+  "env": {
+     "browser": true
+    }
+}

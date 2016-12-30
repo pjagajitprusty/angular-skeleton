@@ -1,12 +1,15 @@
-var APP = angular.module('Angular-Skeleton', ['ngAnimate', 'ngRoute', 'ui.bootstrap']);
+(function() {
+  'use strict';
+  angular
+  .module('Angular-Skeleton', ['ngAnimate', 'ngRoute', 'ui.bootstrap'])
+  .config(['$routeProvider', routingConfig])
 
-APP.config(['$routeProvider', routingConfig])
-function routingConfig($routeProvider) {
-  $routeProvider
+  function routingConfig($routeProvider) {
+    $routeProvider
     .when('/', {
-      templateUrl : './templates/home.html',
-      controller : 'homeController',
-      controllerAs : 'vm',
+    templateUrl : './templates/home.html',
+    controller : 'HomeController',
+    controllerAs : 'vm'
     })
-
-}
+  }
+}());
